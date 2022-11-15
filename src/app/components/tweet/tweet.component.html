@@ -1,0 +1,62 @@
+<div class="container">
+    <div *ngFor="let user of get">
+        <div class="card border-secondary mb-3 my-auto mx-auto"
+            style="max-width: 30rem;margin-top: 10em;">
+            
+            <div class="card-header"><img src="../../../assets/images/tweetAvatar.png" alt="...">{{user.userName}}</div>
+            <div class="card-body">
+                <h5 class="card-title">{{user.tweet}}</h5>
+                <img *ngIf="user_id === user.userName"
+                src="../../assets/images/delete.png "
+                width="30px" height=""
+                alt="delete"
+                srcset="" class="ml-auto"
+                (click)="delete(user.tweetId)"
+                style = "float: right;">
+                <p class="card-text" style="font-size: small; font-weight: bold; color: #13416e;">Posted :<span>{{getTimeInAgoformat(user.created)}}</span></p>
+                <img *ngIf="user_id !== user.userName"
+                src="../../assets/images/reply.png "
+                width="30px" height=""
+                alt="reply"
+                srcset="" class="ml-auto"
+                (click)="open(content)"
+                style = "float: right;">
+                <!-- <img *ngIf="user_id !== user.userName"
+                src="../../assets/images/like.png "
+                width="30px" height=""
+                alt="reply"
+                srcset="" class="ml-auto"
+                (click)="like(user.tweetId)"
+                style = "float: right;"> -->
+            </div>
+            <div class="card-header bg-light">
+                <p *ngFor="let reply of user.replies|keyvalue"><span style = "color: #13416e; font-weight:bolder;">{{reply.key}}
+                    Replied :</span>
+                    {{reply.value}}</p>
+
+            </div>
+        </div>
+        <ng-template #content let-c="close" let-d="dismiss">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Reply</h4>
+                <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <input [(ngModel)]="replyMessage" width="100%"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancel</button>
+                <button type="button" class="btn btn-outline-dark" (click)="reply(user.tweetId,replyMessage)">Reply</button>
+            </div>
+        </ng-template>
+
+
+    </div>
+
+
+    
+    <!-- <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button> -->
+    
+
+
+</div>

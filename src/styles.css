@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+.navbar-brand {
+    color: black;
+    font-family: cursive;
+}
+.navbar.navbar-dark {
+    background-color: #0b2239;
+}

@@ -1,0 +1,11 @@
+label {
+    font-weight: bolder;
+}
+.center {
+    margin: 0 auto !important;
+    float: none !important;
+}
+.col-lg-7 {
+    margin-top: 10px;
+    margin-left: 5px;
+}

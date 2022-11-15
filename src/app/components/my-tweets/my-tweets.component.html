@@ -1,0 +1,37 @@
+<div class="container">
+    <div *ngFor="let user of get">
+        <div class="card border-secondary mb-3 my-auto mx-auto"
+            style="max-width: 25rem;margin-top: 10em;">
+            <div class="card-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-8" >
+                           <small *ngIf="tweetExist"> {{message}}</small>
+                        </div>
+                        <div class="col-8">
+                            <h5 class = "card-title"> {{user.tweet}}</h5>
+                        </div>
+                        <div class="col-4 ml-auto" >
+                            <img
+                                src="../../assets/images/delete.png "
+                                width="30px" height=""
+                                alt="delete"
+                                srcset="" class="ml-auto"
+                                (click)="delete(user.tweetId)"
+                                style = "float: right;">
+                        </div>
+                    </div>
+                </div>
+                <p class="card-text" style="font-size: small; font-weight: bold; color: #13416e;">Posted :<span>{{getTimeInAgoformat(user.created)}}</span></p>
+
+            </div>
+            <!-- <div class="card-header bg-light">
+                <p *ngFor="let reply of user.replies|keyvalue"><span style = "color: #13416e; font-weight:bolder;">{{reply.key}}
+                    Replied :</span>
+                    {{reply.value}}</p>
+            </div> -->
+
+        </div>
+
+    </div>
+</div>
